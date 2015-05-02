@@ -38,10 +38,19 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'mongodb' => [
+            'class' => '\yii\mongodb\Connection',
+            'dsn' => 'mongodb://c3projetos:bbcb7b424@localhost:27017/c3',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false
-        ]
+            'showScriptName' => false,
+            'rules' => [
+                '/sobre'   => '/site/about',
+                '/contato' => '/site/contact'
+            ]
+        ],
+        
     ],
     'params' => $params,
 ];
@@ -49,10 +58,23 @@ $config = [
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = 'yii\debug\Module';
-
+    $config['modules']['debug'] = [
+        'class' => 'yii\\debug\\Module',
+                'panels' => [
+                    'mongodb' => [
+                        'class' => 'yii\\mongodb\\debug\\MongoDbPanel',
+                    ],
+                ]
+        ];
     $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = 'yii\gii\Module';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'generators' => [
+            'mongoDbModel' => [
+                'class' => 'yii\mongodb\gii\model\Generator'
+            ]
+        ]
+    ];
 }
 
 return $config;

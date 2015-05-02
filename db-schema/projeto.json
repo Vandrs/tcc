@@ -1,0 +1,32 @@
+{
+    "_id":"",
+    "titulo":"",
+    "resumo":"",
+    "descricao":"",
+    "categoria_id":"",
+    "etapa":"",
+    "url_path":"",
+    "url_externa":"",
+    "owner_id":"",
+    "integrantes":[
+        {
+            "user_id":"",
+            "user_project_role":""
+        }
+    ],
+    "foto_principal_path":"",
+    "fotos":[
+        {
+            "_id":"",
+            "titulo":"",
+            "descicao":"",
+            "file_path":""
+        }
+    ],
+    "anexo":{
+        "titulo":"",
+        "file_path":""
+    },
+    "created_at":"",
+    "updated_at":""
+}
