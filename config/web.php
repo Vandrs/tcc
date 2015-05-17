@@ -15,7 +15,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\negocio\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -47,7 +47,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '/sobre'   => '/site/about',
-                '/contato' => '/site/contact'
+                '/contato' => '/site/contact',
+                '/projetos/visualizar/<slug:[a-zA-Z0-9_ -]+>' => '/projetos/visualizar'
             ]
         ],
         

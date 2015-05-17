@@ -1,2 +1,9 @@
 body{ background-color:#F1F1F1; }
-.container-content{ background-color: #FFFFFF; padding: 10px; border: 1px solid #E2E2E2; }
+.container-content, .breadcrumb{ background-color: #FFFFFF; border: 1px solid #E2E2E2; }
+.container-content { padding: 20px; }
+.container-title{ padding-left: 20px; padding-right: 20px; }
+.projeto-view{ margin-top: 50px; }
+.margin-top-20{ margin-top: 20px; }
+.foto-fundo-container{ width:100%; background-color:transparent; background-repeat: repeat-x}
+#navProfileImage{height: 32px; margin-right:10px}
+.navbar-nav > li > a, .navbar-brand{line-height:32px}

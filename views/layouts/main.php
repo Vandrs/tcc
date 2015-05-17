@@ -24,28 +24,9 @@ AppAsset::register($this);
 
 <?php $this->beginBody() ?>
     <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'C3 - Projetos',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Sobre', 'url' => ['/site/about']],
-                    ['label' => 'Contato', 'url' => ['/site/contact']],
-                    Yii::$app->user->isGuest ?
-                        ['label' => 'Entrar', 'url' => ['/site/login']] :
-                        ['label' => 'Sair (' . Yii::$app->user->identity->username . ')',
-                            'url' => ['/site/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
-                ],
-            ]);
-            NavBar::end();
-        ?>
+        
+        <?= $this->render("partials/_navbar", ["view"=>$this]); ?>
+        
 
         <div class="container">
             <?= Breadcrumbs::widget([

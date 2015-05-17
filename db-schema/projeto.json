@@ -14,7 +14,7 @@
             "user_project_role":""
         }
     ],
-    "foto_principal_path":"",
+    "foto_capa":"",
     "fotos":[
         {
             "_id":"",
@@ -23,10 +23,8 @@
             "file_path":""
         }
     ],
-    "anexo":{
-        "titulo":"",
-        "file_path":""
-    },
+    "anexo":"",
+    "anexo_titulo":"",
     "created_at":"",
     "updated_at":""
 }

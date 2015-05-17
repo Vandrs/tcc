@@ -14,10 +14,14 @@ abstract class MasterCollection{
     public function findAll($orderBy = null){
         $query = new Query();
         if(isset($orderBy) && !empty($orderBy)){
-            return $query->from($this->getCollectionName())->orderBy(["nome" => SORT_ASC])->all();
+            return $query->from($this->getCollectionName())->orderBy($orderBy)->all();
         } else {
             return $query->from($this->getCollectionName())->all();
         }
         
+    }
+    public function findOne($params = []){
+        $query = new Query();
+        return $query->from($this->getCollectionName())->params($params)->one();
     }
 }

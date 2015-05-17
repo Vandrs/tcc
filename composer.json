@@ -13,12 +13,34 @@
         "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "google/apiclient",
+                "version": "1.0.0",
+                "source": {
+                    "url": "https://github.com/google/google-api-php-client.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": [
+                        "src/"
+                    ]
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-mongodb": "~2.0.0"
+        "yiisoft/yii2-mongodb": "~2.0.0",
+        "2amigos/yii2-ckeditor-widget" : "*",
+        "facebook/php-sdk-v4" : "4.0.*",
+        "google/apiclient": "1.0.*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

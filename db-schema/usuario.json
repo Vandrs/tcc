@@ -1,13 +1,16 @@
 {
     "_id":"",
+    "social_id":"",
+    "login_type":"",
     "username":"",
     "email":"",
     "password":"",
     "nome":"",
-    "foto":"",
+    "foto_grande":"",
+    "foto_pequena":"",
     "url":"",
-    "linkedin_url":"",
-    "facebook_url":"",
+    "created_at":"",
+    "updated_at":"",
     "formacao":[
         {
             "insitituicao":"",
@@ -27,8 +30,6 @@
     ],
     "skills":[],
     "areas_de_interesse":[],
-    "has_facebook_data":"",
-    "has_linkedin_data":"",
     "facebook_data":{},
     "linkedin_data":{}
 }
