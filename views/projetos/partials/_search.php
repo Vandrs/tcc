@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'descricao') ?>
 
     <?= $form->field($model, 'categoria_id') ?>
+    
+    <?= $form->field($model, 'slug') ?>
 
     <?php // echo $form->field($model, 'etapa') ?>
 

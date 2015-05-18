@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'resumo',
             'descricao',
             'categoria_id',
+            'slug',
             // 'etapa',
             // 'url_path',
             // 'url_externa',
@@ -39,8 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'anexo_file_path',
             // 'created_at',
             // 'updated_at',
-        ['class' => 'yii\grid\ActionColumn'],
-
         ],
     ]); ?>
 

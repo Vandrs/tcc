@@ -74,4 +74,10 @@ class GooglePlusUtil{
     private function getPicturePath(){
         return Yii::$app->basePath."/web/upload";
     }
+    
+    public static function loadScriptShareButton(){
+        return  '<script src="https://apis.google.com/js/platform.js" async defer>'.
+                    '{lang: "pt-BR"}'.
+                '</script>';
+    }
 }

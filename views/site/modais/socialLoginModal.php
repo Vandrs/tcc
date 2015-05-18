@@ -14,9 +14,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="loginSocialLabel">Login social</h4>
       </div>
-      <div class="modal-body">
-          <a class="btn btn-primary" href="<?=$fbLoginUrl?>">Entrar com o Facebook</a>
-          <a class="btn btn-warning" href="<?=$gpUrl?>">Entrar com o Google Plus</a>
+      <div class="modal-body text-center">
+          <a class="btn btn-facebook" href="<?=$fbLoginUrl?>">Entrar com o Facebook</a>
+          <span class="display-block margin-top-10 margin-bottom-10"> ou </span>
+          <a class="btn btn-googleplus" href="<?=$gpUrl?>">Entrar com o Google+</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

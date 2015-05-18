@@ -3,4 +3,9 @@ $(document).ready(function(){
         e.preventDefault();
         $('#loginSocialModal').modal('show');
     });
+    
+    $(document).on("click",".unimplemeted-action",function(e){
+        e.preventDefault();
+        alert('Ação não implementada.');
+    });
 });

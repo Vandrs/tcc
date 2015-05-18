@@ -4,6 +4,32 @@ body{ background-color:#F1F1F1; }
 .container-title{ padding-left: 20px; padding-right: 20px; }
 .projeto-view{ margin-top: 50px; }
 .margin-top-20{ margin-top: 20px; }
+.margin-top-10{ margin-top: 10px; }
+.margin-bottom-10{ margin-bottom: 10px; }
+.margin-bottom-20{ margin-bottom: 20px; }
 .foto-fundo-container{ width:100%; background-color:transparent; background-repeat: repeat-x}
 #navProfileImage{height: 32px; margin-right:10px}
 .navbar-nav > li > a, .navbar-brand{line-height:32px}
+.display-block{display: block}
+
+/*Bloco  Integrantes Projeto*/
+.conter-integrantes{ width:100%;   padding-bottom: 10px; border-bottom: solid 1px #CCCCCC;}
+.conter-integrantes .integrante{width: 50px; margin-right: 5px;}
+.conter-integrantes h3.titulo{margin-top:0px;}
+/*Fim Bloco Integrantes Projeto*/
+
+/*Bloco Gerenciar Projeto*/
+.conter-gerenciar-projeto{padding:10px; padding-bottom:0px; width:100%; margin-bottom:20px; border-bottom: solid 1px #CCCCCC; background-color:ghostwhite}
+.conter-gerenciar-projeto .actions{font-size: 30px;}
+.conter-gerenciar-projeto .actions a{margin-right:10px; color:#696666} 
+/*Fim Bloco Gerenciar Projeto*/
+
+/*Bloco Compartilhar Projeto*/
+.conter-social-share{width:100%;  margin-top:20px; padding-bottom: 10px;}
+.conter-social-share .social-buttons {line-height: 10px;}
+.conter-social-share .social-buttons .social-button{    margin-right:10px; }
+/*Fim Bloco Compartilhar Projeto*/
+    
+.btn-facebook,.btn-facebook:hover,.btn-facebook:active{color: #fff !important; background-color: #4A6EAA; border-color: #14395A; background-image:url('../imagens/facebook-icon.png'); background-repeat: no-repeat;   padding-left: 38px; background-size: 35px;}
+.btn-googleplus,.btn-googleplus:hover,.btn-googleplus:active{color: #fff !important; background-color: #D61F1F; border-color: #732710; background-image:url('../imagens/google-plus-icon.png'); background-repeat: no-repeat; padding-left: 38px; background-size: 35px;}
+

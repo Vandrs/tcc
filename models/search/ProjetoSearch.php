@@ -18,7 +18,7 @@ class ProjetoSearch extends Projeto
     public function rules()
     {
         return [
-            [['_id', 'titulo', 'resumo', 'descricao', 'categoria_id', 'etapa', 'slug', 'url_externa', 'owner_id', 'foto_capa', 'anexo_titulo', 'anexo', 'created_at', 'updated_at'], 'safe'],
+            [['_id', 'titulo', 'resumo', 'descricao', 'slug','categoria_id', 'etapa', 'slug', 'url_externa', 'owner_id', 'foto_capa', 'anexo_titulo', 'anexo', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 

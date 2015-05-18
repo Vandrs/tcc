@@ -5,6 +5,7 @@ use yii\mongodb\ActiveRecord;
 use app\models\collections\UsuarioCollection;
 use MongoDate;
 use MongoId;
+use Yii;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -114,5 +115,22 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             $this->collection = new UsuarioCollection();
         }
         return $this->collection;
+    }
+    
+    public function getProfilePicture($small = TRUE){
+        $profilePicture = ($small)?$this->foto_pequena:$this->foto_grande;
+        if(empty($profilePicture)){
+            return $this->getUploadWebPath()."profileDefault.png";
+        } else {
+            return $this->getUploadWebPath().$profilePicture;
+        }
+    }
+    
+    public function getUploadWebPath(){
+        return Yii::$app->request->getHostInfo().Yii::$app->request->getBaseUrl()."/upload/";
+    }
+    
+    public function getUploadRootPath(){
+        return Yii::$app->basePath."/web/upload/";
     }
 }

@@ -17,7 +17,7 @@ $navbarItems = [
     ];
 } else {
 $navbarItems = [    
-        ['label' => BaseHtml::img(Yii::$app->request->BaseUrl."/upload/".Yii::$app->user->identity->foto_pequena,["id"=>"navProfileImage"]).Yii::$app->user->identity->nome, 'url' => '/usuario/perfil','encode'=>false],   
+        ['label' => BaseHtml::img(Yii::$app->user->identity->getProfilePicture(),["id"=>"navProfileImage"]).Yii::$app->user->identity->nome, 'url' => '/usuario/perfil','encode'=>false],   
         ['label' => 'Sobre', 'url' => ['/site/about']], 
         ['label' => 'Contato', 'url' => ['/site/contact']],
         ['label' => '(Sair)', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]

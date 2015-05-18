@@ -5,8 +5,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\negocio\Projeto */
-$this->registerCssFile('/css/inputstyle.css');
-$this->registerJsFile('/js/inputstyle.js',["depends"=>'app\assets\AppAsset']);
+$this->registerCssFile(Yii::$app->request->BaseUrl.'/css/inputstyle.css');
+$this->registerJsFile(Yii::$app->request->BaseUrl.'/js/inputstyle.js',["depends"=>'app\assets\AppAsset']);
 
 $this->title = 'Novo Projeto';
 $this->params['breadcrumbs'][] = ['label' => 'Projetos', 'url' => ['index']];

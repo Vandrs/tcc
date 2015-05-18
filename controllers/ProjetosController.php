@@ -77,6 +77,7 @@ class ProjetosController extends Controller
         if ($model->load(Yii::$app->request->post()) ) {
             $model->uploadFile('foto_capa');
             $model->uploadFile('anexo');
+            $model->setOwner(Yii::$app->user->identity);
             if(!$model->hasErrors()){
                 if($model->save()){
                     return $this->redirect(['visualizar', 'slug' => $model->slug]);
@@ -97,7 +98,16 @@ class ProjetosController extends Controller
      */
     public function actionUpdate($id)
     {
+        
         $model = $this->findModel($id);
+        
+        if(Yii::$app->user->isGuest || empty($model) || !$model->userBelongsToProject(Yii::$app->user->identity)){
+            return $this->render('/site/error',["message"=>"Você não tem permissão para acessar esta página.","name" => "Acesso negado"]);
+        }
+        
+        $this->layout = "projeto";
+        
+        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => (string)$model->_id]);
@@ -132,7 +142,7 @@ class ProjetosController extends Controller
         if (($model = Projeto::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return null;
         }
     }
 

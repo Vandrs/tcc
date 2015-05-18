@@ -157,7 +157,7 @@ class SiteController extends Controller
     }
     
     public function actionGpluslogin(){
-//        try{
+        try{
             $gpUtil = new GooglePlusUtil();
             $userToken = $gpUtil->requireUserToken(Yii::$app->request->get('code'));
             $userdata  = $gpUtil->requireUserInfo($userToken);
@@ -170,6 +170,7 @@ class SiteController extends Controller
                 $user = new User();
                 $user->nome = $userdata->getDisplayName();
                 $user->social_id = $userdata->getId();
+                /** @TODO buscar Emails do usuário */
     //            $user->email = (isset($userData["email"]))?$userData["email"]:"";
     //            print_r($userdata->getEmails());
                 $user->url = $userdata->getUrl();
@@ -191,9 +192,9 @@ class SiteController extends Controller
             
             Yii::$app->user->login($user,0);
             return $this->goHome();
-//        } catch(Exception $e){
-//            return $this->render('/site/error',["name"=>"Ops!!!","message"=>"Ocorreu um erro inesperado ao tentar realizar a ação solicidata."]);
-//        }
+        } catch(Exception $e){
+            return $this->render('/site/error',["name"=>"Ops!!!","message"=>"Ocorreu um erro inesperado ao tentar realizar a ação solicidata."]);
+        }
     }
     
     public function actionTeste(){

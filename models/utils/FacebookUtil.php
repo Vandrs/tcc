@@ -8,6 +8,7 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
 use Yii;
+use yii\web\View;
 
 class FacebookUtil{
     
@@ -100,5 +101,34 @@ class FacebookUtil{
     
     private function getPicturePath(){
         return Yii::$app->basePath."/web/upload";
+    }
+    
+    public static function prepareOpenGraphHeader(View $view, $titulo, $descricao, $slug){
+        $view->registerMetaTag(['property'=>'fb:app_id','content' => self::$APP_ID]);
+        $view->registerMetaTag(['property'=>'og:site_name','content' => 'C3 - Projetos']);
+        $view->registerMetaTag(['property'=>'og:url ','content' => Yii::$app->request->getHostInfo().Yii::$app->request->getBaseUrl()."/projetos/visualizar/".$slug]);
+        $view->registerMetaTag(['property'=>'og:title','content' => $titulo]);
+        $view->registerMetaTag(['property'=>'og:description','content' => $descricao]);
+        $view->registerMetaTag(['property'=>'og:type','content' => 'article']);
+    }
+    
+    public static function loadJavaScriptSDK(){
+        return "<div id='fb-root'></div>
+                <script type='text/javascript'>
+                window.fbAsyncInit = function() {
+                    FB.init({
+                      appId      : '".self::$APP_ID."',
+                      xfbml      : true,
+                      version    : 'v2.3'
+                    });
+                };
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = '//connect.facebook.net/pt_BR/sdk.js';
+                   fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+                </script>";
     }
 }

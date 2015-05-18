@@ -7,6 +7,9 @@ use MongoDate;
 use app\models\utils\DateUtil;
 use app\models\utils\UrlUtil;
 use yii\mongodb\Query;
+use app\models\negocio\User;
+use app\models\enum\EnumProjetoRole;
+use Yii;
 
 /**
  * This is the model class for collection "projeto".
@@ -24,11 +27,15 @@ use yii\mongodb\Query;
  * @property string $anexo_titulo
  * @property string $anexo
  * @property \MongoDate $created_at
- * @property \MongoDate $updated_at
+ * @property \MongoDate $updated_a
+ * @property app\models\negocio\User $owner Usuario que criou o projeto
  */
 class Projeto extends \yii\mongodb\ActiveRecord
 {
-    /**
+    
+    
+    private $owner;
+  /**
      * @inheritdoc
      */
     public static function collectionName()
@@ -86,6 +93,9 @@ class Projeto extends \yii\mongodb\ActiveRecord
             if(!$this->createAndValidateSlug($insert)){
                 return false;
             }
+            if($this->owner){
+                $this->owner_id = $this->owner->id;
+            }
             $this->created_at = new MongoDate();
         } else {
             $this->updated_at = new MongoDate();
@@ -142,5 +152,49 @@ class Projeto extends \yii\mongodb\ActiveRecord
     
     public static function findBySlug($slug){
         return self::findOne(['slug' => $slug]);
+    }
+    
+    public function getOwner(){
+        if(empty($this->owner)){
+            $this->owner = User::findIdentity($this->owner_id);
+        }
+        
+        return $this->owner;
+    }
+    
+    public function setOwner(User $owner){
+        $this->owner = $owner;
+    }
+    
+    /** @TODO Posteriormente temos que buscar todos os integrantes do projeto */
+    public function getIntegrantes(){
+        $integrantes = [
+            EnumProjetoRole::OWNER  => $this->getOwner(),
+            EnumProjetoRole::WORKER => [],
+            EnumProjetoRole::MENTOR => []
+        ];
+        return $integrantes;
+    }
+    
+    public function userBelongsToProject(User $user){
+        $integrantes = $this->getIntegrantes();
+        if((string)$integrantes[EnumProjetoRole::OWNER]->getId() == (string)$user->getId()){
+            return true;
+        }
+        foreach($integrantes[EnumProjetoRole::WORKER] as $worker){
+            if((string)$worker->getId() == (string)$user->getId()){
+                return true;
+            }
+        }
+        foreach($integrantes[EnumProjetoRole::MENTOR] as $mentor){
+            if((string)$mentor->getId() == (string)$mentor->getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public function getPrettyUrl(){
+        return Yii::$app->request->getHostInfo().Yii::$app->request->BaseUrl."projetos/visualizar/".$this->slug;
     }
 }
